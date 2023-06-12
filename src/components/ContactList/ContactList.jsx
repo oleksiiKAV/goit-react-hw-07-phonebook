@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { BtnStyled } from 'components/ContactForm/ContactForm.styled';
 import { ItemStyled, ListStyled } from './ContactList.styled';
 import { getContact, removeContact } from 'redux/contactsOperations';
-import { selectIsContacts, showFilteredContacts, selectError } from 'redux/contactsSelector';
-
+import { showFilteredContacts, selectError } from 'redux/contactsSelector';
+// selectIsContacts, 
 const ContactList = () => {
   const dispatch = useDispatch();
   // const isContacts = useSelector(selectIsContacts);
