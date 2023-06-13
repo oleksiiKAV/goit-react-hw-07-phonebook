@@ -21,14 +21,16 @@ const ContactForm = () => {
     const { name, value } = e.target;
     setForm(prevForm => ({ ...prevForm, [name]: value }));
   };
-
-  const handleSubmit = e => {
-    const { name, number } = form;
+  const { name,number} = form;
+  const handleSubmit = (e) => {
+    // const { name, number } = form;
+    
     e.preventDefault();
     if (contacts.some(el => el.name.toLowerCase() === name.toLowerCase())) {
       return alert(`${name} is already in contacts.`);
     }
     dispatch(addContact(form));
+    
     setForm({ name: '', number: '' });
   };
 
@@ -42,6 +44,7 @@ const ContactForm = () => {
           pattern="^[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
+          value={name}
           onChange={handleChange}
         />
       </LabelStyled>
@@ -53,6 +56,7 @@ const ContactForm = () => {
           pattern="^\+[1-9]{1}[0-9]{3,14}$"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
+          value={number}
           onChange={handleChange}
         />
         <BtnStyled type="submit">Add contact</BtnStyled>

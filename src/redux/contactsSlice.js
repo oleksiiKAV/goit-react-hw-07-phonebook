@@ -7,6 +7,10 @@ const initialState = {
   filter: '',
   isLoading: false,
   error: null,
+  form: {
+    name: '',
+    number: '',
+  },
 };
 
 const contactsSlice = createSlice({
@@ -33,12 +37,15 @@ const contactsSlice = createSlice({
     builder
       .addCase(addContact.fulfilled, (state, { payload }) => {
         state.contacts.push(payload);
+        
       })
       .addCase(getContact.fulfilled, (state, { payload }) => {
         state.contacts = payload;
+        
       })
       .addCase(removeContact.fulfilled, (state, { payload }) => {
         state.contacts = state.contacts.filter(el => el.id !== payload);
+
       })
       .addMatcher(
         action => {
